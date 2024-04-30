@@ -1,15 +1,13 @@
 # device_timezone
 
-A new Flutter plugin project.
+A flutter plugin for getting the local timezone of the OS.
+
+This is an updated version of the [flutter_timezone](https://pub.dev/packages/flutter_timezone) project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+### Get the timezone
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+```dart
+final String? currentTimeZone = await DeviceTimezone.getLocalTimezone();
+```
