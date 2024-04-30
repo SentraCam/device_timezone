@@ -1,0 +1,23 @@
+PODS:
+  - device_timezone (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - FlutterMacOS (1.0.0)
+
+DEPENDENCIES:
+  - device_timezone (from `Flutter/ephemeral/.symlinks/plugins/device_timezone/darwin`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+
+EXTERNAL SOURCES:
+  device_timezone:
+    :path: Flutter/ephemeral/.symlinks/plugins/device_timezone/darwin
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+
+SPEC CHECKSUMS:
+  device_timezone: 118b8f19424366cc61c584a0dbc371b2954abc98
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+
+PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
+
+COCOAPODS: 1.15.2
