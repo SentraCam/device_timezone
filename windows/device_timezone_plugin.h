@@ -3,6 +3,7 @@
 
 #include <flutter/method_channel.h>
 #include <flutter/plugin_registrar_windows.h>
+#include <string>
 
 #include <memory>
 
@@ -24,6 +25,9 @@ class DeviceTimezonePlugin : public flutter::Plugin {
   void HandleMethodCall(
       const flutter::MethodCall<flutter::EncodableValue> &method_call,
       std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
+
+    std::string WcharToString(wchar_t* wc);
+
 };
 
 }  // namespace device_timezone
