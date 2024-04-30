@@ -54,10 +54,9 @@ namespace device_timezone {
 				result->Error("UNAVAILABLE", "Timezone not available.");
         return;
 			}
+    flutter::EncodableList timeZones;
 
-      std::string timeZones[1];
-
-      timeZones[0] =identifier;
+      timeZones.push_back(flutter::EncodableValue(identifier));
 
       result->Success(flutter::EncodableValue(timeZones));
 
