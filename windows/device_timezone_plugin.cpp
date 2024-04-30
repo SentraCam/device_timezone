@@ -41,12 +41,38 @@ namespace device_timezone {
 		std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
 		if (method_call.method_name().compare("getLocalTimezone") == 0) {
 
-			TIME_ZONE_INFORMATION timeZoneInfo;
+			std::string identifier = GetLocalTimezone();
+			if (identifier.compare("") == 0) {
+				result->Error("UNAVAILABLE", "Timezone not available.");
+        return;
+			}
+			result->Success(flutter::EncodableValue(identifier));
+		}
+    else if (method_call.method_name().compare("getAvailableTimezones") == 0) {
+      std::string identifier = GetLocalTimezone();
+			if (identifier.compare("") == 0) {
+				result->Error("UNAVAILABLE", "Timezone not available.");
+        return;
+			}
+
+      std::string timeZones[1];
+
+      timeZones[0] =identifier;
+
+      result->Success(flutter::EncodableValue(timeZones));
+
+    }
+		else {
+			result->NotImplemented();
+		}
+	}
+
+  std::string DeviceTimezonePlugin::GetLocalTimezone() {
+    TIME_ZONE_INFORMATION timeZoneInfo;
 			DWORD zoneInfoResult = GetTimeZoneInformation(&timeZoneInfo);
 
 			if (zoneInfoResult == TIME_ZONE_ID_INVALID) {
-				result->NotImplemented();
-        return;
+        return "";
 			}
 
 			// Identify Time Zone based on return value
@@ -62,12 +88,8 @@ namespace device_timezone {
 				identifier = WcharToString(timeZoneInfo.DaylightName);
 				break;
 			}
-			result->Success(flutter::EncodableValue(identifier));
-		}
-		else {
-			result->NotImplemented();
-		}
-	}
+    return identifier;
+  }
 
 	std::string DeviceTimezonePlugin::WcharToString(wchar_t* wc) {
     std::wstring wstr(wc);
