@@ -2,7 +2,7 @@
 
 A flutter plugin for getting the local timezone of the OS.
 
-This is an updated version of the [flutter_timezone](https://pub.dev/packages/flutter_timezone) project.
+This is an updated version of the [flutter_timezone](https://pub.dev/packages/flutter_timezone) project to include Windows support.
 
 ## Getting Started
 
@@ -12,7 +12,11 @@ This is an updated version of the [flutter_timezone](https://pub.dev/packages/fl
 final String? currentTimeZone = await DeviceTimezone.getLocalTimezone();
 ```
 
+### Get all available timezones
 
+```dart
+final List<String> availableTimezones = await DeviceTimezone.getAvailableTimezones();
+```
 ### Windows
 
 Update [Visual Studio](https://visualstudio.microsoft.com) to the latest version for using `C++ 20`.
