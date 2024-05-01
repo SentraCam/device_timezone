@@ -1,3 +1,3 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+Initial release as device_timezone. This release is built on top of flutter_timezone v1.0.8 with windows support.

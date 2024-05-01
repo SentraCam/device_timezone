@@ -1,7 +1,7 @@
 name: device_timezone
-description: "A new Flutter plugin project."
-version: 0.0.1
-homepage:
+description: "A flutter plugin for getting the local timezone of the device."
+version: 1.0.0
+homepage: https://github.com/SentraCam/device_timezone
 
 environment:
   sdk: ">=3.3.2 <4.0.0"
@@ -43,8 +43,6 @@ flutter:
       ios:
         pluginClass: DeviceTimezonePlugin
         sharedDarwinSource: true
-      linux:
-        pluginClass: DeviceTimezonePlugin
       macos:
         pluginClass: DeviceTimezonePlugin
         sharedDarwinSource: true
