@@ -59,9 +59,15 @@ namespace device_timezone {
 
   std::string DeviceTimezonePlugin::GetLocalTimezone() {
 
-    const std::chrono::time_zone* current_z = std::chrono::current_zone();
-    return std::string{current_z->name()};
-   
+   try {
+      const std::chrono::time_zone* current_z = std::chrono::current_zone();
+      return std::string{current_z->name()};
+    }
+    catch (const std::runtime_error& e) {
+        // Handle initialization error
+        std::cerr << "Error getting current timezone " << e.what() << std::endl;
+        return "";
+    }
   }
 
    flutter::EncodableList DeviceTimezonePlugin::GetAvailableTimezones() {
