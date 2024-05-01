@@ -3,14 +3,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:device_timezone/device_timezone.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+
+  const MyApp({super.key});
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   String? _timezone = 'Unknown';
   List<String> _availableTimezones = <String>[];
 
@@ -24,13 +26,13 @@ class _MyAppState extends State<MyApp> {
     try {
       _timezone = await DeviceTimezone.getLocalTimezone();
     } catch (e) {
-      print('Could not get the local timezone');
+      debugPrint('Could not get the local timezone');
     }
     try {
       _availableTimezones = await DeviceTimezone.getAvailableTimezones();
       _availableTimezones.sort();
     } catch (e) {
-      print('Could not get available timezones');
+      debugPrint('Could not get available timezones');
     }
     if (mounted) {
       setState(() {});
@@ -47,7 +49,7 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: <Widget>[
             Text('Local timezone: $_timezone\n'),
-            Text('Available timezones:'),
+            const Text('Available timezones:'),
             Expanded(
               child: ListView.builder(
                 itemCount: _availableTimezones.length,
