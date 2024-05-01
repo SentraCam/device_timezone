@@ -48,16 +48,8 @@ namespace device_timezone {
 			result->Success(flutter::EncodableValue(identifier));
 		}
     else if (method_call.method_name().compare("getAvailableTimezones") == 0) {
-      std::string identifier = GetLocalTimezone();
-			if (identifier.compare("") == 0) {
-				result->Error("UNAVAILABLE", "Timezone not available.");
-        return;
-			}
-    flutter::EncodableList timeZones;
 
-      timeZones.push_back(flutter::EncodableValue(identifier));
-
-      result->Success(flutter::EncodableValue(timeZones));
+      result->Success(flutter::EncodableValue(GetAvailableTimezones()));
 
     }
 		else {
@@ -71,5 +63,23 @@ namespace device_timezone {
     return std::string{current_z->name()};
    
   }
+
+   flutter::EncodableList DeviceTimezonePlugin::GetAvailableTimezones() {
+
+    flutter::EncodableList timeZones;
+
+    try {
+
+       for (auto& tz : std::chrono::get_tzdb().zones){
+
+          timeZones.push_back(flutter::EncodableValue(std::string{tz.name()}));
+        }
+
+    } catch (const std::runtime_error& e) {
+        // Handle initialization error
+        std::cerr << "Error initializing time zone database: " << e.what() << std::endl;
+    }
+    return timeZones;
+   }
 
 }  // namespace device_timezone

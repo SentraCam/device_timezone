@@ -3,6 +3,7 @@
 
 #include <flutter/method_channel.h>
 #include <flutter/plugin_registrar_windows.h>
+#include <flutter/standard_method_codec.h>
 #include <string>
 
 #include <memory>
@@ -27,6 +28,9 @@ class DeviceTimezonePlugin : public flutter::Plugin {
       std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
 
   std::string GetLocalTimezone();
+
+  flutter::EncodableList GetAvailableTimezones();
+
 };
 
 }  // namespace device_timezone
