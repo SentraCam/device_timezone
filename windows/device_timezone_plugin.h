@@ -27,9 +27,6 @@ class DeviceTimezonePlugin : public flutter::Plugin {
       std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
 
   std::string GetLocalTimezone();
-
-    std::string WcharToString(wchar_t* wc);
-
 };
 
 }  // namespace device_timezone

@@ -11,3 +11,15 @@ This is an updated version of the [flutter_timezone](https://pub.dev/packages/fl
 ```dart
 final String? currentTimeZone = await DeviceTimezone.getLocalTimezone();
 ```
+
+
+### Windows
+
+Update [Visual Studio](https://visualstudio.microsoft.com) to the latest version for using `C++ 20`.
+
+> **💡 If you can't compile**
+> 
+> Try downloading a latest Windows SDK:
+> 1. Open Visual Studio Installer
+> 2. Select Modify
+> 3. Select Windows SDK

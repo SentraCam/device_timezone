@@ -8,6 +8,9 @@ cmake_minimum_required(VERSION 3.14)
 set(PROJECT_NAME "device_timezone")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
+# Added by alexrabin-sentracam for c++ 20
+set(CMAKE_CXX_STANDARD 20)
+
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.
 cmake_policy(VERSION 3.14...3.25)
